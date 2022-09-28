@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/redux@4.2.0/dist/redux.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <p id="value"></p>
-    <button id="plus">+</button>
-    <button id="minus">-</button>
+    <div class="container">
+        <div class="text">
+            <p id="value"></p>
+        </div>
+        <div class="buttons">
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+        </div>
+    </div>    
 
     <script>
         const value = document.querySelector("#value");
