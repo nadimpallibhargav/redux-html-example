@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.min.js"></script>
+</head>
+<body>
+    <p id="value"></p>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+    <script>
+        const value = document.querySelector("#value");
+        const plus = document.querySelector("#plus");
+        const minus = document.querySelector("#minus");
+
+        const intialState = {
+            value: 0,
+        };
+
+        function Reducer(state = intialState, action) {
+        switch (action.type) {
+            case "increment":
+            return { ...state, value: state.value + 1 };
+            case "decrement":
+            return { ...state, value: state.value - 1 };
+            default:
+            return state;
+        }
+        }
+
+        const store = Redux.createStore(Reducer);
+
+        plus.addEventListener("click", () => {
+            store.dispatch({ type: "increment" });
+        });
+        minus.addEventListener("click", () => {
+            store.dispatch({ type: "decrement" });
+        });
+
+        function valueUpdate() {
+            const state = store.getState();
+            value.innerHTML = state.value;
+        }
+        valueUpdate();
+
+        store.subscribe(valueUpdate);
+    </script>
+</body>
+</html>
